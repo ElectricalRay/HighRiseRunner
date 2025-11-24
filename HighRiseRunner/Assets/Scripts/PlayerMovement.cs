@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     InputAction moveAction;
 
+    [SerializeField] bool isRunning;
+
     private void Start()
     {
         this.moveAction = InputSystem.actions.FindAction("Move");
@@ -19,6 +22,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!isRunning)
+        {
+            isRunning = true;
+            StartCoroutine(AddDistance());
+        }
+
         Vector2 moveInput = this.moveAction.ReadValue<Vector2>();
 
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed);
@@ -28,5 +37,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, leftLimit, rightLimit);
         transform.position = pos;
+    }
+
+    IEnumerator AddDistance()
+    {
+        yield return new WaitForSeconds(0.35f);
+        MasterInfo.distanceRun++;
+        isRunning = false;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CollectableRotate : MonoBehaviour
 {
-    [SerializeField] int rotateSpeed = 1; 
+    [SerializeField] float rotateSpeed = 1; 
 
     // Update is called once per frame
     void Update()
