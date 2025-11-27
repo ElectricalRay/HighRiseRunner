@@ -6,8 +6,11 @@ public class CollectGem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        gemFX.Play();
-        MasterInfo.gemCount++;
-        this.gameObject.SetActive(false);
+        if(other.gameObject.CompareTag("Player"))
+        {
+            gemFX.Play();
+            MasterInfo.gemCount++;
+            this.gameObject.SetActive(false);
+        }
     }
 }

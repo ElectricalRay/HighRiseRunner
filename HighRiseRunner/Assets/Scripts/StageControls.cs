@@ -6,9 +6,11 @@ public class StageControls : MonoBehaviour
 {
     [SerializeField] GameObject fadeOut;
     [SerializeField] GameObject fadeIn;
+    [SerializeField] GameObject stageDistance;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        stageDistance.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("DesertHighScore");
         StartCoroutine(FadeInTurnOff());
     }
 
@@ -33,5 +35,6 @@ public class StageControls : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         fadeIn.SetActive(false);
+
     }
 }

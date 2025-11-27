@@ -9,6 +9,8 @@ public class CollisionDetect : MonoBehaviour
     [SerializeField] AudioSource collisionFX;
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject fadeOut;
+    [SerializeField] GameObject aliveScreen;
+    [SerializeField] GameObject gameOverScreen;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,10 +30,11 @@ public class CollisionDetect : MonoBehaviour
         playerAnimator.GetComponent<Animator>().Play("Stumble Backwards");
         mainCamera.GetComponent<Animator>().Play("CollisionCamera");
 
-        yield return new WaitForSeconds(3);
-        fadeOut.SetActive(true);
+        yield return new WaitForSeconds(1);
 
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(0);
+        aliveScreen.SetActive(false);
+        gameOverScreen.SetActive(true);
+
+        fadeOut.SetActive(true);
     }
 }

@@ -13,11 +13,17 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] GameObject menuControls;
     [SerializeField] AudioSource buttonSelect;
     [SerializeField] GameObject fadeIn;
+    [SerializeField] GameObject gems;
+    [SerializeField] GameObject coins;
     public static bool hasClicked;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        coins.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalCoins");
+        gems.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalGems");
+
+
         StartCoroutine(FadeInTurnOff());
         if (hasClicked)
         {
@@ -42,6 +48,9 @@ public class MainMenuControl : MonoBehaviour
 
     public void StartGame()
     {
+        MasterInfo.gemCount = 0;
+        MasterInfo.coinCount = 0;
+        MasterInfo.distanceRun = 0;
         StartCoroutine(StartButton());
     }
 
