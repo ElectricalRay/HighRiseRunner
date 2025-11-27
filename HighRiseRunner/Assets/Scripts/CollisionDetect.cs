@@ -18,7 +18,13 @@ public class CollisionDetect : MonoBehaviour
     IEnumerator CollisionEnd()
     {
         collisionFX.Play();
-        thePlayer.GetComponent<PlayerMovement>().enabled = false;
+        thePlayer.GetComponent<PlayerMovement>().canMove = false;
+
+        Rigidbody playerRb = thePlayer.GetComponent<Rigidbody>();
+        playerRb.linearVelocity = Vector3.zero;
+        playerRb.angularVelocity = Vector3.zero;
+        playerRb.useGravity = true;
+
         playerAnimator.GetComponent<Animator>().Play("Stumble Backwards");
         mainCamera.GetComponent<Animator>().Play("CollisionCamera");
 
