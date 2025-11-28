@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class LoadToScript : MonoBehaviour
 {
     [SerializeField] GameObject fadeOut;
+    public static string chosenLevelName;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,6 +24,6 @@ public class LoadToScript : MonoBehaviour
         yield return new WaitForSeconds(3);
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(chosenLevelName);
     }
 }

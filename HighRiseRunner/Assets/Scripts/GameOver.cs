@@ -10,6 +10,7 @@ public class GameOver : MonoBehaviour
     public bool newRecord;
     private void OnEnable()
     {
+        string levelScoreName = SceneManager.GetActiveScene().name + "HighScore";
         if(PlayerPrefs.HasKey("TotalCoins"))
         {
             int currentCoins = PlayerPrefs.GetInt("TotalCoins");
@@ -29,20 +30,20 @@ public class GameOver : MonoBehaviour
             PlayerPrefs.SetInt("TotalGems", MasterInfo.gemCount);
         }
 
-        if(PlayerPrefs.HasKey("DesertHighScore"))
+        if(PlayerPrefs.HasKey(levelScoreName))
         {
-            int currentHighScore = PlayerPrefs.GetInt("DesertHighScore");
+            int currentHighScore = PlayerPrefs.GetInt(levelScoreName);
             if(MasterInfo.distanceRun > currentHighScore)
             {
                 newRecord = true;
-                PlayerPrefs.SetInt("DesertHighScore", MasterInfo.distanceRun);
+                PlayerPrefs.SetInt(levelScoreName, MasterInfo.distanceRun);
             } else
             {
                 newRecord = false;
             }
         } else
         {
-            PlayerPrefs.SetInt("DesertHighScore", MasterInfo.distanceRun);
+            PlayerPrefs.SetInt(levelScoreName, MasterInfo.distanceRun);
             newRecord = true;
         }
 

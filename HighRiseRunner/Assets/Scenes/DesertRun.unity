@@ -833,7 +833,7 @@ Transform:
   m_GameObject: {fileID: 97390363}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 2.47, y: 1.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3658,9 +3658,11 @@ MonoBehaviour:
   - {fileID: 600289763}
   - {fileID: 1478095683}
   - {fileID: 287941277}
-  zPos: 50
+  player: {fileID: 616517697}
+  spawnZ: 50
+  segmentLength: 50
+  segmentsAhead: 4
   creatingSegment: 0
-  segmentNum: 0
 --- !u!4 &393571532
 Transform:
   m_ObjectHideFlags: 0
@@ -6095,6 +6097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   canMove: 1
   playerSpeed: 10
+  speedIncreasePerSec: 0.05
+  maxSpeed: 50
   horizontalSpeed: 6
   jumpForce: 7.5
   rightLimit: 5.5

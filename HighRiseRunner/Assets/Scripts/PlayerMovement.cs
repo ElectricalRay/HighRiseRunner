@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
 
     public float playerSpeed = 10;
+    public float speedIncreasePerSec = 0.05f;
+    public float maxSpeed = 50f;
     public float horizontalSpeed = 4;
     public float jumpForce = 5;
 
@@ -36,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerSpeed += speedIncreasePerSec * Time.deltaTime;
+        playerSpeed = Mathf.Clamp(playerSpeed, 0, maxSpeed);
+
         if(!canMove)
         {
             this.jumpAction.started -= onJumpStarted;
@@ -61,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator AddDistance()
     {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(15 / playerSpeed);
         MasterInfo.distanceRun++;
         isRunning = false;
     }

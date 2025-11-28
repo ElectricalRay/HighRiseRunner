@@ -1,31 +1,53 @@
+using NUnit.Framework;
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SegmentGeneration : MonoBehaviour
 {
     public GameObject[] segments;
+    public Transform player;
 
-    [SerializeField] int zPos = 50;
+    [SerializeField] int spawnZ = 50;
+    [SerializeField] int segmentLength = 50;
+    [SerializeField] int segmentsAhead = 4;
+
     [SerializeField] bool creatingSegment = false;
-    [SerializeField] int segmentNum;
+
+    List<GameObject> generatedSegments = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Update()
+    void Start()
     {
-        if(!creatingSegment)
+        for(int i = 0; i < segmentsAhead; i++)
         {
-            creatingSegment = true;
-            StartCoroutine(SegmentGen());
+            SpawnSegment();
         }
     }
 
-    IEnumerator SegmentGen()
+    void Update()
     {
-        segmentNum = Random.Range(0, segments.Length);
-        Instantiate(segments[segmentNum], new Vector3(0, 0, zPos), Quaternion.identity);
-        zPos += 50;
+        if(player.position.z + (segmentsAhead * segmentLength) > spawnZ)
+        {
+            SpawnSegment();
+            DeleteSegments();
+        }
+    }
 
-        yield return new WaitForSeconds(2);
-        creatingSegment = false;
+    void SpawnSegment()
+    {
+        int segmentIndex = Random.Range(0, segments.Length);
+        GameObject genSegment = Instantiate(segments[segmentIndex], new Vector3(0, 0, spawnZ), Quaternion.identity);
+        generatedSegments.Add(genSegment);
+        spawnZ += segmentLength;
+    }
+
+    void DeleteSegments()
+    {
+        while(generatedSegments.Count > 6)
+        {
+            Destroy(generatedSegments[0]);
+            generatedSegments.RemoveAt(0);
+        }
     }
 }
