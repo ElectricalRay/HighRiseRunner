@@ -841,7 +841,7 @@ Transform:
   m_GameObject: {fileID: 97390363}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.47, y: 1.5, z: 0}
+  m_LocalPosition: {x: -0.073, y: 2.604, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6145,9 +6145,11 @@ MonoBehaviour:
   leftLimit: -5.5
   isJumping: 0
   onGround: 0
+  isSliding: 0
   isRunning: 0
   rb: {fileID: 616517699}
   playerAnimator: {fileID: 778676702}
+  triggerBox: {fileID: 1255300857}
 --- !u!54 &616517699
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11331,7 +11333,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

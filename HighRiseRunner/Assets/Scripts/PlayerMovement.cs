@@ -17,22 +17,33 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isJumping;
     public bool onGround;
+    public bool isSliding;
 
     InputAction moveAction;
     InputAction jumpAction;
+    InputAction slideAction;
 
     [SerializeField] bool isRunning;
 
     public Rigidbody rb;
 
     [SerializeField] GameObject playerAnimator;
+    [SerializeField] GameObject triggerBox;
+
+    Vector3 triggerBoxDefaultPos;
+    Quaternion triggerBoxDefaultRot;
 
     private void Start()
     {
         this.moveAction = InputSystem.actions.FindAction("Move");
         this.jumpAction = InputSystem.actions.FindAction("Jump");
+        this.slideAction = InputSystem.actions.FindAction("Sprint");
 
         this.jumpAction.started += onJumpStarted;
+        this.slideAction.started += onSlideStarted;
+
+        triggerBoxDefaultPos = triggerBox.transform.localPosition;
+        triggerBoxDefaultRot = triggerBox.transform.localRotation;
     }
 
     // Update is called once per frame
@@ -83,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void onJumpStarted(InputAction.CallbackContext context)
     {
-        if(onGround)
+        if(onGround && !isSliding)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             onGround = false;
@@ -91,5 +102,31 @@ public class PlayerMovement : MonoBehaviour
             playerAnimator.GetComponent<Animator>().SetBool("isGrounded", false);
             playerAnimator.GetComponent<Animator>().Play("Jump Start");
         }
+    }
+
+    public void onSlideStarted(InputAction.CallbackContext context)
+    {
+        if(onGround && !isSliding)
+        {
+            playerAnimator.GetComponent<Animator>().Play("Slide");
+            Vector3 triggerPos = triggerBox.transform.localPosition;
+            triggerPos.y = (float)-0.7;
+            triggerBox.transform.localPosition = triggerPos;
+
+            triggerBox.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
+            StartCoroutine(ResetTriggerAfterSlide());
+        }
+    }
+
+    IEnumerator ResetTriggerAfterSlide()
+    {
+        float slideTime = playerAnimator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(slideTime + 1);
+
+        triggerBox.transform.localPosition = triggerBoxDefaultPos;
+        triggerBox.transform.localRotation = triggerBoxDefaultRot;
+
+        isSliding = false;
     }
 }

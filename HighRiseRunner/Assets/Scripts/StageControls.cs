@@ -54,7 +54,7 @@ public class StageControls : MonoBehaviour
 
     public void PressNext()
     {
-        if (selectedLevelIndex >= camLevelPositions.Length) return;
+        if (selectedLevelIndex >= camLevelPositions.Length - 1) return;
 
         selectedLevelIndex++;
         SlideToCurrent();

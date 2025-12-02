@@ -14,7 +14,10 @@ public class CollisionDetect : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(CollisionEnd());
+        if(other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(CollisionEnd());
+        }
     }
 
     IEnumerator CollisionEnd()
