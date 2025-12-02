@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isJumping;
     public bool onGround;
     public bool isSliding;
+    public bool canMoveSide = true;
 
     InputAction moveAction;
     InputAction jumpAction;
@@ -41,6 +42,8 @@ public class PlayerMovement : MonoBehaviour
 
         this.jumpAction.started += onJumpStarted;
         this.slideAction.started += onSlideStarted;
+        this.moveAction.started += onMoveSideStart;
+        this.moveAction.canceled += onMoveSideEnd;
 
         triggerBoxDefaultPos = triggerBox.transform.localPosition;
         triggerBoxDefaultRot = triggerBox.transform.localRotation;
@@ -55,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
         if(!canMove)
         {
             this.jumpAction.started -= onJumpStarted;
+            this.slideAction.started -= onSlideStarted;
+            this.moveAction.started -= onMoveSideStart;
+            this.moveAction.canceled -= onMoveSideEnd;
             return;
         }
 
@@ -68,7 +74,10 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed);
 
-        transform.Translate(Vector3.right * moveInput.x * Time.deltaTime * horizontalSpeed);
+        if(canMoveSide)
+        {
+            transform.Translate(Vector3.right * moveInput.x * Time.deltaTime * horizontalSpeed);
+        }
 
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(pos.x, leftLimit, rightLimit);
@@ -114,6 +123,8 @@ public class PlayerMovement : MonoBehaviour
             triggerBox.transform.localPosition = triggerPos;
 
             triggerBox.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            isSliding = true;
+            canMoveSide = false;
 
             StartCoroutine(ResetTriggerAfterSlide());
         }
@@ -122,11 +133,30 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator ResetTriggerAfterSlide()
     {
         float slideTime = playerAnimator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(slideTime + 1);
+        yield return new WaitForSeconds(slideTime + (float)0.75);
 
         triggerBox.transform.localPosition = triggerBoxDefaultPos;
         triggerBox.transform.localRotation = triggerBoxDefaultRot;
 
         isSliding = false;
+        canMoveSide = true;
+    }
+
+    public void onMoveSideStart(InputAction.CallbackContext context) 
+    {
+        Vector2 sideInput = context.ReadValue<Vector2>();
+        if(sideInput.x > 0)
+        {
+            playerAnimator.GetComponent<Animator>().SetBool("isRunRight", true);
+        } else if (sideInput.x < 0)
+        {
+            playerAnimator.GetComponent<Animator>().SetBool("isRunLeft", true);
+        }
+    }
+
+    public void onMoveSideEnd(InputAction.CallbackContext context)
+    {
+        playerAnimator.GetComponent<Animator>().SetBool("isRunRight", false);
+        playerAnimator.GetComponent<Animator>().SetBool("isRunLeft", false);
     }
 }

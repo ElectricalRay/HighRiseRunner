@@ -6146,6 +6146,7 @@ MonoBehaviour:
   isJumping: 0
   onGround: 0
   isSliding: 0
+  canMoveSide: 1
   isRunning: 0
   rb: {fileID: 616517699}
   playerAnimator: {fileID: 778676702}
