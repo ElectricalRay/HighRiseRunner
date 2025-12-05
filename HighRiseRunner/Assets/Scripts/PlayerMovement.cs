@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -28,14 +30,31 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
 
-    [SerializeField] GameObject playerAnimator;
+    [SerializeField] List<GameObject> characters = new List<GameObject>();
+    GameObject playerAnimator;
+    public int selectedCharacter;
+
     [SerializeField] GameObject triggerBox;
 
     Vector3 triggerBoxDefaultPos;
     Quaternion triggerBoxDefaultRot;
 
-    private void Start()
+    private void Awake()
     {
+        foreach (GameObject character in characters)
+        {
+            character.SetActive(false);
+        }
+
+        selectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+        playerAnimator = characters[selectedCharacter];
+
+        playerAnimator.SetActive(true);
+    }
+
+    private void Start()
+    {;
+
         this.moveAction = InputSystem.actions.FindAction("Move");
         this.jumpAction = InputSystem.actions.FindAction("Jump");
         this.slideAction = InputSystem.actions.FindAction("Sprint");

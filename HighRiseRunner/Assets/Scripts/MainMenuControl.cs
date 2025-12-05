@@ -1,4 +1,6 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -15,7 +17,26 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] GameObject fadeIn;
     [SerializeField] GameObject gems;
     [SerializeField] GameObject coins;
+    [SerializeField] List<GameObject> characters = new List<GameObject>();
+    [SerializeField] Transform charSelectorCameraPosition;
+    [SerializeField] Transform mainMenuCameraPosition;
     public static bool hasClicked;
+
+    public int selectedCharIndex;
+    GameObject selectedCharacter;
+
+    private void Awake()
+    {
+        foreach (GameObject character in characters)
+        {
+            character.SetActive(false);
+        }
+
+        selectedCharIndex = PlayerPrefs.GetInt("SelectedCharacter");
+        selectedCharacter = characters[selectedCharIndex];
+
+        selectedCharacter.SetActive(true);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +73,11 @@ public class MainMenuControl : MonoBehaviour
         MasterInfo.coinCount = 0;
         MasterInfo.distanceRun = 0;
         StartCoroutine(StartButton());
+    }
+
+    public void MoveToCharSelector()
+    {
+
     }
 
     IEnumerator StartButton()
