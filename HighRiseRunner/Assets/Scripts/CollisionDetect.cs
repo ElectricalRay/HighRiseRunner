@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class CollisionDetect : MonoBehaviour
 {
     [SerializeField] GameObject thePlayer;
-    [SerializeField] GameObject playerAnimator;
     [SerializeField] AudioSource collisionFX;
     [SerializeField] GameObject mainCamera;
     [SerializeField] GameObject fadeOut;
@@ -25,6 +24,7 @@ public class CollisionDetect : MonoBehaviour
         collisionFX.Play();
         thePlayer.GetComponent<PlayerMovement>().canMove = false;
 
+        GameObject playerAnimator = thePlayer.GetComponent<PlayerMovement>().playerAnimator;
         Rigidbody playerRb = thePlayer.GetComponent<Rigidbody>();
         playerRb.linearVelocity = Vector3.zero;
         playerRb.angularVelocity = Vector3.zero;

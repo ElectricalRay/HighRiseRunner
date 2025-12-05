@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
 
     [SerializeField] List<GameObject> characters = new List<GameObject>();
-    GameObject playerAnimator;
+    public GameObject playerAnimator;
     public int selectedCharacter;
 
     [SerializeField] GameObject triggerBox;

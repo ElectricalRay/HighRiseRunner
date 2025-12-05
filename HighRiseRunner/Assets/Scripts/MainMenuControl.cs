@@ -1,3 +1,4 @@
+using DG.Tweening;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,7 +21,10 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] List<GameObject> characters = new List<GameObject>();
     [SerializeField] Transform charSelectorCameraPosition;
     [SerializeField] Transform mainMenuCameraPosition;
+    [SerializeField] GameObject charSelectorPage;
+    [SerializeField] GameObject mainMenuPage;
     public static bool hasClicked;
+    public float slideTime = 2f;
 
     public int selectedCharIndex;
     GameObject selectedCharacter;
@@ -77,7 +81,30 @@ public class MainMenuControl : MonoBehaviour
 
     public void MoveToCharSelector()
     {
+        staticCam.transform
+            .DOMove(charSelectorCameraPosition.position, slideTime)
+            .SetEase(Ease.InOutCubic);
 
+        mainMenuPage.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
+        {
+            mainMenuPage.SetActive(false);
+            charSelectorPage.SetActive(true);
+            charSelectorPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
+        });
+    }
+
+    public void MoveCharSelectorToMainMenu()
+    {
+        staticCam.transform
+            .DOMove(mainMenuCameraPosition.position, slideTime)
+            .SetEase(Ease.InOutCubic);
+
+        charSelectorPage.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
+        {
+            charSelectorPage.SetActive(false);
+            mainMenuPage.SetActive(true);
+            mainMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
+        });
     }
 
     IEnumerator StartButton()

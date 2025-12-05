@@ -50,7 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f7527b89123e2364e99946887a1ee407, type: 3}
       propertyPath: m_Name
-      value: Aj
+      value: Aj_Level
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f7527b89123e2364e99946887a1ee407, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
