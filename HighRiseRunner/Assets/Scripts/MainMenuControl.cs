@@ -95,6 +95,20 @@ public class MainMenuControl : MonoBehaviour
 
     public void MoveCharSelectorToMainMenu()
     {
+        int currentSelectedCharacter = PlayerPrefs.GetInt("SelectedCharacter");
+        if (currentSelectedCharacter != selectedCharIndex)
+        {
+            selectedCharIndex = currentSelectedCharacter;
+            foreach (GameObject character in characters)
+            {
+                character.SetActive(false);
+            }
+
+            selectedCharacter = characters[selectedCharIndex];
+
+            selectedCharacter.SetActive(true);
+        }
+
         staticCam.transform
             .DOMove(mainMenuCameraPosition.position, slideTime)
             .SetEase(Ease.InOutCubic);
