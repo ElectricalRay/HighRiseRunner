@@ -21,8 +21,10 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] List<GameObject> characters = new List<GameObject>();
     [SerializeField] Transform charSelectorCameraPosition;
     [SerializeField] Transform mainMenuCameraPosition;
+    [SerializeField] Transform storeMenuCameraPosition;
     [SerializeField] GameObject charSelectorPage;
     [SerializeField] GameObject mainMenuPage;
+    [SerializeField] GameObject storeMenuPage;
     public static bool hasClicked;
     public float slideTime = 2f;
 
@@ -116,6 +118,34 @@ public class MainMenuControl : MonoBehaviour
         charSelectorPage.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
         {
             charSelectorPage.SetActive(false);
+            mainMenuPage.SetActive(true);
+            mainMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
+        });
+    }
+
+    public void MovetoStore()
+    {
+        staticCam.transform
+            .DOMove(storeMenuCameraPosition.position, slideTime)
+            .SetEase(Ease.InOutCubic);
+
+        mainMenuPage.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
+        {
+            mainMenuPage.SetActive(false);
+            storeMenuPage.SetActive(true);
+            storeMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
+        });
+    }
+
+    public void MoveStoreToMainMenu()
+    {
+        staticCam.transform
+            .DOMove(mainMenuCameraPosition.position, slideTime)
+            .SetEase(Ease.InOutCubic);
+
+        storeMenuPage.GetComponent<CanvasGroup>().DOFade(0, 1f).OnComplete(() =>
+        {
+            storeMenuPage.SetActive(false);
             mainMenuPage.SetActive(true);
             mainMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
         });
