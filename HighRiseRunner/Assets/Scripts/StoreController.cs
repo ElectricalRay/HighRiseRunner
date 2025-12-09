@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class StoreController : MonoBehaviour
 {
+    [SerializeField] GameObject gems;
+    [SerializeField] GameObject coins;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        coins.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalCoins");
+        gems.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalGems");
     }
 
     // Update is called once per frame
