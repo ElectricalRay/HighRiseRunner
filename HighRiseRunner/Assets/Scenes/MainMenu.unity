@@ -10133,6 +10133,7 @@ MonoBehaviour:
   mainMenuPage: {fileID: 1641785172}
   storeMenuPage: {fileID: 755978003}
   charactorSelectorController: {fileID: 123014058}
+  storeController: {fileID: 36587606}
   slideTime: 2
   selectedCharIndex: 0
 --- !u!4 &1818023135

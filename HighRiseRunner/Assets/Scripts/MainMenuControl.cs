@@ -26,6 +26,7 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] GameObject mainMenuPage;
     [SerializeField] GameObject storeMenuPage;
     [SerializeField] CharactorSelector charactorSelectorController;
+    [SerializeField] StoreController storeController;
     public static bool hasClicked;
     public float slideTime = 2f;
 
@@ -136,6 +137,7 @@ public class MainMenuControl : MonoBehaviour
         {
             mainMenuPage.SetActive(false);
             storeMenuPage.SetActive(true);
+            storeController.updateCurrencies();
             storeMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
         });
     }
