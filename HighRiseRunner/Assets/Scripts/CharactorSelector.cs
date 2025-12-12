@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,10 +13,19 @@ public class CharactorSelector : MonoBehaviour
     [SerializeField] TextMeshProUGUI SelectButtonText;
     [SerializeField] Button SelectButton;
 
+    public int Pete;
+    public int Aj;
+    public int Doozy;
+    public int Mousey;
+    public int Suzie;
+
+    public List<int> CharsPrefs = new List<int>() {0, 0, 0, 0, 0};
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        
+        UpdateCharPrefs();
     }
     public void ChangeCharacter(int num)
     {
@@ -37,10 +48,19 @@ public class CharactorSelector : MonoBehaviour
 
         if(number != selectedChar)
         {
-            SelectButtonText.text = "Select";
+            if (CharsPrefs[number] < 1)
+            {
+                SelectButtonText.text = "Locked";
+                SelectButton.interactable = false;
+            } else
+            {
+                SelectButton.interactable = true;
+                SelectButtonText.text = "Select";
+            }
         }
         else
         {
+            SelectButton.interactable = true;
             SelectButtonText.text = "Selected";
             if (EventSystem.current && SelectButton)
             {
@@ -62,6 +82,7 @@ public class CharactorSelector : MonoBehaviour
     }
     public void SetUpSelector()
     {
+        UpdateCharPrefs();
         if (PlayerPrefs.HasKey("SelectedCharacter"))
         {
             selectedChar = PlayerPrefs.GetInt("SelectedCharacter");
@@ -79,11 +100,29 @@ public class CharactorSelector : MonoBehaviour
             Characters[i].SetActive(false);
         }
 
+        SelectButtonText.text = "Selected";
+        SelectButton.interactable = false;
+
         Characters[number].SetActive(true);
 
         if (EventSystem.current && SelectButton)
         {
             EventSystem.current.SetSelectedGameObject(SelectButton.gameObject);
         }
+    }
+
+    public void UpdateCharPrefs()
+    {
+        Pete = 1;
+        Aj = PlayerPrefs.GetInt("AjChar");
+        Doozy = PlayerPrefs.GetInt("DoozyChar");
+        Mousey = PlayerPrefs.GetInt("MouseyChar");
+        Suzie = PlayerPrefs.GetInt("SuzieChar");
+
+        CharsPrefs[0] = Pete;
+        CharsPrefs[1] = Aj;
+        CharsPrefs[2] = Doozy;
+        CharsPrefs[3] = Mousey;
+        CharsPrefs[4] = Suzie;
     }
 }

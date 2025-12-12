@@ -1049,6 +1049,12 @@ MonoBehaviour:
   number: 0
   SelectButtonText: {fileID: 1629135763}
   SelectButton: {fileID: 871344306}
+  Pete: 0
+  Aj: 0
+  Doozy: 0
+  Mousey: 0
+  Suzie: 0
+  CharsPrefs: 0000000000000000000000000000000000000000
 --- !u!1001 &126551309
 PrefabInstance:
   m_ObjectHideFlags: 0
