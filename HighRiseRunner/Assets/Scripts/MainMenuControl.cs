@@ -49,8 +49,7 @@ public class MainMenuControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        coins.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalCoins");
-        gems.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalGems");
+        UpdateCurrencies();
 
 
         StartCoroutine(FadeInTurnOff());
@@ -137,7 +136,7 @@ public class MainMenuControl : MonoBehaviour
         {
             mainMenuPage.SetActive(false);
             storeMenuPage.SetActive(true);
-            storeController.updateCurrencies();
+            storeController.updateOnEnter();
             storeMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
         });
     }
@@ -152,8 +151,15 @@ public class MainMenuControl : MonoBehaviour
         {
             storeMenuPage.SetActive(false);
             mainMenuPage.SetActive(true);
+            UpdateCurrencies();
             mainMenuPage.GetComponent<CanvasGroup>().DOFade(1, 1f);
         });
+    }
+
+    public void UpdateCurrencies()
+    {
+        coins.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalCoins");
+        gems.gameObject.GetComponent<TMPro.TMP_Text>().text = "" + PlayerPrefs.GetInt("TotalGems");
     }
 
     IEnumerator StartButton()
