@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class CollectCoin : MonoBehaviour
+public class CollectCoin : CollectCollectible
 {
-    [SerializeField] AudioSource coinFX;
-
-    private void OnTriggerEnter(Collider other)
+    protected override void OnCollect()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            coinFX.Play();
-            MasterInfo.coinCount++;
-            this.gameObject.SetActive(false);
-        }
+        MasterInfo.coinCount++;
     }
 }

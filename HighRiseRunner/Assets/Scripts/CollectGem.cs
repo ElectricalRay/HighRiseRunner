@@ -1,16 +1,9 @@
 using UnityEngine;
 
-public class CollectGem : MonoBehaviour
+public class CollectGem : CollectCollectible
 {
-    [SerializeField] AudioSource gemFX;
-
-    private void OnTriggerEnter(Collider other)
+    protected override void OnCollect()
     {
-        if(other.gameObject.CompareTag("Player"))
-        {
-            gemFX.Play();
-            MasterInfo.gemCount++;
-            this.gameObject.SetActive(false);
-        }
+        MasterInfo.gemCount++;
     }
 }

@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &50450030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &303298539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2775,7 +2775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &328789209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3148,7 +3148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &365231084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3368,7 +3368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &369836051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4156,7 +4156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &414539067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4596,7 +4596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e610424f19f91a46adbfc01ff98f6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectGem
-  gemFX: {fileID: 1960077597}
+  sfx: {fileID: 1960077597}
 --- !u!1001 &454836832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4777,7 +4777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &480522680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5010,7 +5010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!1 &510073432
 GameObject:
   m_ObjectHideFlags: 0
@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &510073435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5735,7 +5735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &594782651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6243,7 +6243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &626276611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6853,7 +6853,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &706539556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7066,7 +7066,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &725925507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8118,7 +8118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &861372932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10778,7 +10778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &1288770428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13396,7 +13396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &1598263414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14676,7 +14676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &1744649335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15551,7 +15551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &1831684673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15754,7 +15754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &1862788191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17293,7 +17293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e04feb1880531140966d12e9ae71fb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinFX: {fileID: 1036649195}
+  sfx: {fileID: 1036649195}
 --- !u!114 &2043988056
 MonoBehaviour:
   m_ObjectHideFlags: 0
