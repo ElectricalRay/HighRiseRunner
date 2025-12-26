@@ -1,4 +1,6 @@
-<img width="1266" height="721" alt="image" src="https://github.com/user-attachments/assets/9d52daab-20c1-4eee-8bca-596753dfba29" />Welcome to my game High Rise Runner.
+<img width="1269" height="714" alt="Screenshot 2025-12-26 051438" src="https://github.com/user-attachments/assets/f1d81e95-546d-4915-8817-35c87ab67a35" />
+
+Welcome to my game High Rise Runner.
 
 It is a 3d Endless Runner Game that is meant to have a sort of high rise, urban theme. 
 
